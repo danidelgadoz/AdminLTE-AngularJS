@@ -1,0 +1,121 @@
+
+/* Alert fade - ngAnimate*/
+  div.callout {
+    transition: all linear 0.9s;
+  }
+  div.callout.ng-hide {
+    opacity: 0;
+  }
+
+/* loading state in the main content */
+  .mask{
+    display: none; /*This hides the mask*/
+  }
+
+  .mask.ajax{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute; /*required for z-index*/
+    z-index: 1000; /*puts on top of everything*/
+    background-image: url(../img/default.gif);  
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+/* Icon for sorting tables column*/
+  .table-column-sort:after {
+    float: right;
+    content: '\25b2';
+  }
+  .table-column-sort.reverse:after {
+    float: right;
+    content: '\25bc';
+  }
+
+/* Ship to set at relevant text */
+  span.ship {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+  }
+
+  .page {
+    bottom:0; 
+    /*position:absolute;*/
+    top:0;
+    /*width:100%; */
+  }
+
+
+
+/*
+===============================================
+      ANIMATIONS
+===============================================
+*/
+
+/* leaving animations ----------------------------------------- */
+/* rotate and fall */
+@keyframes rotateFall {
+    0%      { transform: rotateZ(0deg); }
+    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40%     { transform: rotateZ(17deg); }
+    60%     { transform: rotateZ(16deg); }
+    100%    { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-100%); }
+}
+
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(100%); }
+    to      { transform: translateX(0); }
+}
+
+/* slide in from the right */
+@keyframes slideInLeft {
+    from    { transform:translateX(-100%); }
+    to      { transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from    { transform:translateY(25%); }
+    to      { transform: translateY(0); }
+}
+
+/* slide in from the top */
+@keyframes slideInTop {
+    from    { transform:translateY(-100%); }
+    to      { transform: translateY(0); }
+}
+
+
+body.login-page.ng-enter { animation: slideInRight 0.5s both ease-in; z-index: 8888; }
+body.sidebar-mini.ng-enter { animation: scaleUp 0.5s both ease-in; z-index: 8888; }
+/*body #app-content.ng-enter { animation: slideInUp 0.5s both ease-in; z-index: 8888; }*/
+
+/*.ng-leave           { animation: slideOutLeft 0.5s both ease-in; z-index: 9999; }*/
+

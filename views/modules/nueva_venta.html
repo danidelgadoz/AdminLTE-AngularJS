@@ -1,0 +1,118 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Nueva venta
+        <small>Optional description</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-5">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">COTIZACION A CLIENTE</h3>
+            </div>
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputFechaEmision" class="col-sm-2 control-label">Fecha Emision</label>
+                  <div class="col-sm-10">
+                    <div class="input-group">                          
+                      <input id="inputFechaEmision" type="text" class="form-control input-sm" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask ng-model="cotizacion.fecha_emision">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmpresa" class="col-sm-2 control-label">Empresa</label>
+                  <div class="col-sm-10">
+                    <select id="inputEmpresa" class="form-control input-sm select2" ng-model="cotizacion.id_cliente" ng-change="GetClienteData(cotizacion.id_cliente)">
+                      <option ng-repeat="x in clientes" value="{{x.ID_CLIENTE}}" ng-bind="x.RAZON_SOCIAL"></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputContacto" class="col-sm-2 control-label">Contacto</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control input-sm" id="inputContacto" placeholder="Contacto" ng-model="clienteSelected.nombre" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputDireccion" class="col-sm-2 control-label">Direccion</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control input-sm" id="inputDireccion" placeholder="Direccion" ng-model="clienteSelected.direccion" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputClienteEmail" class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control input-sm" id="inputClienteEmail" placeholder="Email" ng-model="clienteSelected.email" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputTelefono1" class="col-sm-2 control-label">Teléfono</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control input-sm" id="inputTelefono1" placeholder="Teléfono 1" ng-model="clienteSelected.telefono1" disabled>
+                  </div>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control input-sm" id="inputTelefono2" placeholder="Teléfono 2" ng-model="clienteSelected.telefono2" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputDescripcion" class="col-sm-2 control-label">Mensaje</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control input-sm" rows="2" id="inputDescripcion" placeholder="Mensaje" ng-model="cotizacion.mensaje"></textarea>
+                  </div>
+                </div>                  
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12" style="background: white;">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed">
+              <thead class="light-blue-800">
+                <tr>
+                  <th class="text-center" style="width: 5%;">N°</th>
+                  <th class="text-center" style="width: 10%;">Cantidad</th>
+                  <th class="text-center" style="width: 10%;">Unidad de medida</th>
+                  <th class="text-center" style="width: 30%;">Descripcion</th>
+                  <th class="text-center" style="width: 15%;">Precio unitario</th>
+                  <th class="text-center" style="width: 15%;">Total</th>
+                  <th class="text-center" colspan="2" style="width: 15%;">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in detalle_cotizacion">
+                  <td class="text-left" ng-bind="$index + 1"></td>
+                  <td class="text-center" ng-bind="x.cantidad"></td>
+                  <td class="text-center" ng-bind="x.unidad_de_medida"></td>
+                  <td class="text-left" ng-bind="x.descripcion"></td>
+                  <td class="text-center" ng-bind="x.precio"></td>
+                  <td class="text-center" ng-bind="x.total"></td>
+                  <td style="width: 5%;">
+                    <button class="btn btn-block btn-danger btn-xs" ng-click="EliminarPedido($index)">Eliminar</button>
+                  </td>
+                  <td style="width: 5%;">
+                    <button class="btn btn-block btn-warning btn-xs" ng-click="ModificarPedido($index)" data-toggle="modal" data-target="#myModal">Modificar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>                
+        </div>
+      </div>
+
+    </section><!-- /.content -->

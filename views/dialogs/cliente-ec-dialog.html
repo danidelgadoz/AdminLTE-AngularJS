@@ -1,0 +1,96 @@
+<!-- DIALOG -->
+<md-dialog aria-label="Dialog Example" flex="70">
+    <!-- DIALOG TOOLBAR -->
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools" layout-align="space-between center">
+            <span class="title">Datos del clientexzx</span>
+            <md-button class="md-icon-button" aria-label="Close dialog" ng-click="closeDialog()">
+                <!-- <md-icon md-font-icon="icon-close"></md-icon> -->
+                <md-icon aria-label="Menu" class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <!-- / DIALOG TOOLBAR -->
+    <form name="userForm" ng-submit="cliente.idcliente ? (userForm.$valid && updateTrabajador()) : (userForm.$valid && addCliente())">
+      <!-- DIALOG CONTENT -->
+      <md-dialog-content layout-padding>
+          <div layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>{{ tipocliente=='B2C' ? 'DNI' : 'RUC' }}</label>
+              <input required name="ruc" ng-model="cliente.numero_documento" ng-disabled="cliente.idcliente ?true:false"  ng-pattern="docPattern"/>
+
+              <div ng-messages="userForm.ruc.$error">
+                <div ng-message="required">{{ tipocliente=='B2C' ? 'DNI' : 'RUC' }} es requerido.</div>
+                <div ng-message="pattern">Ingresar {{ tipocliente=='B2C' ? 'DNI' : 'RUC' }} valido.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>{{ tipocliente=='B2C' ? 'Apellidos' : 'Razón Social' }}</label>
+              <input required name="razon_social" ng-model="cliente.apellidos" />
+
+              <div ng-messages="userForm.razon_social.$error">
+                <div ng-message="required">{{ tipocliente=='B2C' ? 'Apellidos' : 'Razón Social' }} es requerido.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>{{ tipocliente=='B2C' ? 'Nombres' : 'Nombre Comercial' }}</label>
+              <input required name="nombre_commercial" ng-model="cliente.nombres" />
+
+              <div ng-messages="userForm.nombre_commercial.$error">
+                <div ng-message="required">{{ tipocliente=='B2C' ? 'Nombres' : 'Nombre Comercial' }} es requerido.</div>
+              </div>
+            </md-input-container>                
+          </div>            
+          <div layout="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Rubro</label>
+              <input required name="rubro" ng-model="cliente.area" />
+
+              <div ng-messages="userForm.rubro.$error">
+                <div ng-message="required">Rubro es requerido.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Correo de Empresa</label>
+              <input type="email" required name="correo" ng-model="cliente.correo" ng-pattern="/^.+@.+\..+$/"/>
+
+              <div ng-messages="userForm.correo.$error">
+                <div ng-message="required">Correo de Empresa es requerido.</div>
+                <div ng-message="pattern">Ingresar correo valido.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Teléfono</label>
+              <input required name="telefono" ng-model="cliente.telefono" ng-pattern="/^[0-9]{7,}$/"/>
+
+              <div ng-messages="userForm.telefono.$error">
+                <div ng-message="required">Teléfono es requerido.</div>
+                <div ng-message="pattern">Ingresar Teléfono valido.</div>
+              </div>
+            </md-input-container>          
+          </div>
+          <div layout="row">
+            <md-input-container class="md-block" flex>
+              <label>Dirección</label>
+              <input required name="direccion" ng-model="cliente.direccion" />
+
+              <div ng-messages="userForm.direccion.$error">
+                <div ng-message="required">Dirección es requerida.</div>
+              </div>
+            </md-input-container>
+          </div>
+      </md-dialog-content>
+      <!-- / DIALOG CONTENT -->
+
+      <!-- DIALOG ACTIONS -->
+      <md-dialog-actions layout="row" layout-align="end center">        
+        <md-button type="submit" class="md-raised md-primary" ng-bind="cliente.idcliente ? 'Actualizar' : 'Agregar'"></md-button>      
+      </md-dialog-actions>
+      <!-- / DIALOG ACTIONS -->
+    </form>
+</md-dialog>
+<!-- / DIALOG -->

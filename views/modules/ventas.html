@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Ventas
+        <small>Optional description</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content" data-ng-init="init()">
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              Ventas
+            </div>
+            <div class="box-body">
+              <table class="table table-condensed table-bordered">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Fecha emision</th>
+                    <th>Documento</th>
+                    <th>Nro Documento</th>
+                    <th>Condicion</th>
+                    <th>Moneda</th>
+                    <th>Total</th>
+                    <th>Cobro</th>
+                    <th>Dcto</th>
+                    <th>Por Cobrar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="v in ventas">
+                    <td ng-bind="v.cliente.razon_social ? v.cliente.razon_social : v.cliente.apellidos"></td>
+                    <td ng-bind="v.fecha_emision"></td>
+                    <td ng-bind="v.documento"></td>
+                    <td ng-bind="v.numero_documento"></td>
+                    <td ng-bind="v.tipo_de_pago.nombre"></td>
+                    <td ng-bind="v.moneda"></td>
+                    <td ng-bind="v.total"></td>
+                    <td ng-bind="v.documento"></td>
+                    <td ng-bind="v.descuento"></td>
+                    <td ng-bind="v.documento"></td>                  
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /.content -->

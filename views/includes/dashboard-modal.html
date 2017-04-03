@@ -1,0 +1,18 @@
+<div class="modal fade" ng-class="modal.type" id="myModalConfirm" role="dialog">
+  <div class="modal-dialog" ng-class="modal.size">          
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" ng-bind="modal.tittle"></h4>
+      </div>
+      <div class="modal-body" ng-bind-html="modal.content">
+        <!-- <p>Some text in the modal.</p> -->
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" ng-if="modal.cancel">Cancelar</button>
+        <button type="button" class="btn btn-outline" ng-click="modal.confirm()">Acesptar</button>
+      </div>
+    </div>            
+  </div>
+</div>
